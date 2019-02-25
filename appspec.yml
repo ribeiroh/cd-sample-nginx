@@ -5,6 +5,16 @@ files:
     destination: /var/www/html
   - source: config
     destination: /etc/nginx/
+permissions:
+  - object: /var/www
+    mode: 755
+    owner: nginx
+    type:
+      - directory
+  - object: /var/www/html
+    pattern: '**'
+    mode: 644
+    owner: nginx
 hooks:
   ApplicationStop:
     - location: scripts/application-stop.sh
